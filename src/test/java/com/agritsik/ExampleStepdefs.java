@@ -24,9 +24,10 @@ public class ExampleStepdefs implements En {
         Given("^Jeff has bought a microwave for (\\d+)$", (Integer arg0) -> {
             this.price = arg0;
 
-            // check that DI and properties are working
+            // check that auto-wiring and configuration are working
             Assert.assertNotNull(restTemplate);
             Assert.assertEquals("Hello Cucumber!", message);
+
         });
         And("^he has a receipt$", () -> {
             // do nothing ...
