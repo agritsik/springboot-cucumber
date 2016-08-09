@@ -3,12 +3,16 @@ package com.agritsik;
 import cucumber.api.java8.En;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.client.RestTemplate;
 
 @ContextConfiguration(classes = MyApplication.class)
 public class ExampleStepdefs implements En {
 
+
+    @Value("${message}")
+    String message;
 
     @Autowired
     RestTemplate restTemplate;
@@ -20,8 +24,9 @@ public class ExampleStepdefs implements En {
         Given("^Jeff has bought a microwave for (\\d+)$", (Integer arg0) -> {
             this.price = arg0;
 
-            // check that bean has been autowired
+            // check that DI and properties are working
             Assert.assertNotNull(restTemplate);
+            Assert.assertEquals("Hello Cucumber!", message);
         });
         And("^he has a receipt$", () -> {
             // do nothing ...
