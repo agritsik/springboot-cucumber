@@ -5,9 +5,11 @@ import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.web.client.RestTemplate;
 
 @ContextConfiguration(classes = MyApplication.class)
+@TestPropertySource("/application.yml")
 public class ExampleStepdefs implements En {
 
 
